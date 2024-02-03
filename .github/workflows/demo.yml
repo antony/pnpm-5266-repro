@@ -1,0 +1,26 @@
+name: Demo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+ setup-build-deploy:
+  name: run
+  timeout-minutes: 2
+  runs-on: ubuntu-latest
+
+  steps:
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: enable corepack
+      run: |
+        corepack enable
+        pnpm exec node -v
+
+    - name: dependencies
+      run: |
+        pnpm exec node -v
+        pnpm install
